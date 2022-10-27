@@ -2,14 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
+@font-face {
+  font-family: "behnschrift";
+  src: url("../components/fonts/bahnschrift/BAHNSCHRIFT.TTF") format("woff");
+}
+@font-face {
+  font-family: "elmessiri";
+  src: url("../components/fonts/elMessiri/elmessiri-regular.otf") format("woff");
+}
+@font-face {
+  font-family: "avenyt";
+  src: url("../components/fonts/FontsFree-Net-Aveny-T-WEB.ttf") format("woff");
+}
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+.behnschrift-font {
+  font-family: "behnschrift";
+}
+.elmessiri-font {
+  font-family: "elmessiri";
+}
+.avenyt-font {
+  font-family: "avenyt";
 }
 
 a {
