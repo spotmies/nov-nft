@@ -10,4 +10,6 @@ module.exports = Object.freeze({
   mint_upto: "You can mint upto 3",
   mint_lable: "Enter the numebr",
   mint_button: "MINT",
+  minimum_mints: 1,
+  maximum_mints: 3,
 });

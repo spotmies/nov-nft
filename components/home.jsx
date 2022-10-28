@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import constants from "./constants";
 
 export default function HomePage() {
+  const [mintCount, setMintCount] = useState(constants.minimum_mints);
+
   return (
     <div className="home-page h-[100vh] w-full bg-slate-400 flex flex-col justify-between">
       <div className="header w-full  pt-[3%] flex  justify-around items-center sm:flex-row flex-col">
@@ -45,9 +47,12 @@ export default function HomePage() {
           <div className="pt-[20px]">{totalMintCount()}</div>
         </div>
       </div>
-      <div className="w-full flex flex-row hidden justify-between items-center sm:inline-flex">
+      {/* end of mobile view */}
+      <div className="w-full flex flex-row hidden justify-between items-end sm:inline-flex">
         <img src="/assets/1.png" className="w-[30vw]" />
-        {totalMintCount()}
+        <div className="flex flex-col h-full items-center justify-center">
+          {totalMintCount()}
+        </div>
         {mintSection()}
       </div>
     </div>
