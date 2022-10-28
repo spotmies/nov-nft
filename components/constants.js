@@ -15,4 +15,6 @@ module.exports = Object.freeze({
   maximum_mints: 3,
   mint_schedule: 1666937620000, // 13 digit timestamp in milliseconds
   background_image: "/assets/background.jpeg",
+  mint_price: 0.05, // in eth
+  whiteList:[]
 });
