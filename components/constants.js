@@ -9,8 +9,8 @@ module.exports = Object.freeze({
   mint_will_start: "Mint will start in",
   mint_has_started: "You can mint now",
   mint_upto: "You can mint upto 2 per Txn",
-  mint_lable: "Enter the numebr",
-  mint_button: "MINT",
+  mint_lable: "Enter the number",
+  mint_button: "SCREEECH",
   minimum_mints: 1,
   maximum_mints: 3,
   mint_schedule: 1666937620000, // 13 digit timestamp in milliseconds
