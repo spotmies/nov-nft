@@ -4,7 +4,7 @@ module.exports = Object.freeze({
   openSeaLink: "",
   etherScanLink: "",
   mintName: "Mint",
-  mintPrice: "0.005 eth",
+  mintPrice: "1 free, rest 0.005 eth",
   mintVolume: "3333",
   mint_will_start: "Mint will start in",
   mint_has_started: "You can mint now",
