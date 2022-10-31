@@ -8,7 +8,7 @@ module.exports = Object.freeze({
   mintVolume: "3333",
   mint_will_start: "Mint will start in",
   mint_has_started: "You can mint now",
-  mint_upto: "You can mint upto 2 per Txn",
+  mint_upto: "2 SCREEECHES per Txn",
   mint_lable: "Enter the number",
   mint_button: "SCREEECH",
   minimum_mints: 1,
