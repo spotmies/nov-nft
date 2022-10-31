@@ -348,8 +348,8 @@ export default function HomePage() {
   function totalMintCount() {
     return (
       <div className="flex flex-col items-center elmessiri-font">
-        <p className="text-4xl sm:text-8xl text-black">{constants.mintName}</p>
-        <p className="sm:text-xl sm:pt-[5px] text-black">
+        <p className="text-4xl sm:text-8xl text-white">{constants.mintName}</p>
+        <p className="sm:text-xl sm:pt-[5px] text-white">
           {constants.mintPrice}
         </p>
 
