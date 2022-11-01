@@ -197,14 +197,15 @@ export default function HomePage() {
 
     try {
       const TotalMinted = await getContract().totalSupply();
-      const userMinted = await getContract().userMint();
+      // const userMinted = await getContract().userMint();
 
-      console.log("myMints", userMinted.toString());
-      setUserMints(parseInt(userMinted._hex, 16));
+      // console.log("myMints", userMinted.toString());
+      // setUserMints(parseInt(userMinted._hex, 16));
       console.log("totalMinted", TotalMinted.toString());
       settotalMinted(TotalMinted.toString());
 
-      return userMinted.toString();
+      // return userMinted.toString();
+      return "0";
 
       // setCurrentMintCount(3769);
     } catch (err) {
@@ -222,35 +223,40 @@ export default function HomePage() {
       }
 
       let ethValue = NFTCount * constants.mint_price;
-      let isWhiteList = await is_whiteList_Valid();
+      let usermints = await getContract().numberMinted(walletAddress);
+
+      if (parseInt(usermints._hex, 16) < 1) {
+        ethValue = ethValue - constants.mint_price;
+      }
+      // let isWhiteList = await is_whiteList_Valid();
       // let isSkullList = await is_skullList_Valid();
 
-      console.log("is whitelist", isWhiteList);
-      if (isWhiteList) {
-        console.log("whitelisted", walletAddress.toLowerCase());
-        if (userMintArg === null) {
-          alert("Please connect to wallet");
-          return;
-        } else {
-          ethValue = 0;
-        }
-      }
+      // console.log("is whitelist", isWhiteList);
+      // if (isWhiteList) {
+      //   console.log("whitelisted", walletAddress.toLowerCase());
+      //   if (userMintArg === null) {
+      //     alert("Please connect to wallet");
+      //     return;
+      //   } else {
+      //     ethValue = 0;
+      //   }
+      // }
 
       console.log("final", NFTCount, ethValue);
-      if (isWhiteList) {
-        getContract()
-          .mint(NFTCount, proof, leaf, {
-            value: ethers.utils.parseEther(ethValue.toString()),
-          })
-          .then((val) => {
-            alert("Token minted successfully");
-            mintCountFromContract();
-          })
-          .catch((error) => {
-            console.log(error.reason);
-            alert(error.reason);
-          });
-      }
+      // if (isWhiteList) {
+      getContract()
+        .mint(NFTCount, {
+          value: ethers.utils.parseEther(ethValue.toString()),
+        })
+        .then((val) => {
+          alert("Token minted successfully");
+          mintCountFromContract();
+        })
+        .catch((error) => {
+          console.log(error.reason);
+          alert(error.reason);
+        });
+      // }
     } catch (error) {
       console.log("error91, mint button", error);
     }
@@ -313,17 +319,24 @@ export default function HomePage() {
               window.open(constants.etherScanLink, "_blank");
             }}
           />
-         {walletAddress === "" ? <img
-            src="/assets/meta-mask-icon.png"
-            className="h-[30px] sm:h-[40px] cursor-pointer"
-            onClick={() => {
-              requestAccount(true);
-            }}
-          /> : <p className="text-black bg-white p-[10px] rounded-3xl font-bold cursor-pointer"
-          onClick={() =>{
-            alert(`Wallet Connected , ${walletAddress}`)
-          }}
-          >0x...{walletAddress.slice(-4)}</p> }
+          {walletAddress === "" ? (
+            <img
+              src="/assets/meta-mask-icon.png"
+              className="h-[30px] sm:h-[40px] cursor-pointer"
+              onClick={() => {
+                requestAccount(true);
+              }}
+            />
+          ) : (
+            <p
+              className="text-black bg-white p-[10px] rounded-3xl font-bold cursor-pointer"
+              onClick={() => {
+                alert(`Wallet Connected , ${walletAddress}`);
+              }}
+            >
+              0x...{walletAddress.slice(-4)}
+            </p>
+          )}
         </div>
       </div>
       {/* Mobile view */}
@@ -416,7 +429,7 @@ export default function HomePage() {
         </div>
         <button
           //disabled={!mintStarted}
-          onClick={clickedMint}
+          onClick={() => clickedMint(mintCount)}
           type="button"
           className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg sm:text-2xl sm:px-5 sm:py-2.5 px-5 py-1.5 mr-2 mb-2  "
         >
