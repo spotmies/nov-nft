@@ -270,10 +270,10 @@ export default function HomePage() {
     requestAccount(false);
     getChainId();
     let userMints = await mintCountFromContract();
-    console.log("userMints", userMints);
-    if (userMints != null) {
-      mintToken(userMints, mints);
-    }
+    // console.log("userMints", userMints);
+    // if (userMints != null) {
+    mintToken("userMints", mints);
+    // }
   };
 
   //
