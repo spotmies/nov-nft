@@ -415,7 +415,8 @@ export default function HomePage() {
           </span>
         </div>
         <button
-          disabled={!mintStarted}
+          //disabled={!mintStarted}
+          onClick={clickedMint}
           type="button"
           className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg sm:text-2xl sm:px-5 sm:py-2.5 px-5 py-1.5 mr-2 mb-2  "
         >
