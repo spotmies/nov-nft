@@ -265,6 +265,7 @@ export default function HomePage() {
   };
 
   const clickedMint = async (mints) => {
+    console.log("clicked mint", mints);
     setMintCount(mints);
     console.log("clickedMint", mints);
     requestAccount(false);
