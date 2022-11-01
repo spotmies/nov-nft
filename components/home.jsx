@@ -205,7 +205,7 @@ export default function HomePage() {
       settotalMinted(TotalMinted.toString());
 
       // return userMinted.toString();
-      return "0";
+      return TotalMinted.toString();
 
       // setCurrentMintCount(3769);
     } catch (err) {
@@ -270,7 +270,7 @@ export default function HomePage() {
     console.log("clickedMint", mints);
     requestAccount(false);
     getChainId();
-    let userMints = await mintCountFromContract();
+    // let userMints = await mintCountFromContract();
     // console.log("userMints", userMints);
     // if (userMints != null) {
     mintToken("userMints", mints);
@@ -291,8 +291,7 @@ export default function HomePage() {
       className="home-page h-[100vh] w-full bg-slate-400 flex flex-col justify-between"
       style={{
         backgroundImage: `url(${constants.background_image})`,
-      }}
-    >
+      }}>
       <div className="header w-full  pt-[3%] flex  justify-around items-center sm:flex-row flex-col">
         <h1 className="text-2xl behnschrift-font text-white sm:text-5xl">
           {constants.heading}
@@ -333,8 +332,7 @@ export default function HomePage() {
               className="text-black bg-white p-[10px] rounded-3xl font-bold cursor-pointer"
               onClick={() => {
                 alert(`Wallet Connected , ${walletAddress}`);
-              }}
-            >
+              }}>
               0x...{walletAddress.slice(-4)}
             </p>
           )}
@@ -370,7 +368,7 @@ export default function HomePage() {
         <div className=" w-[120px] h-[30px] sm:h-[40px] drop-shadow-md sm:w-[140px] bg-white rounded-md mt-[15px]">
           <div className="flex flex-row w-full h-full items-center justify-center">
             <p className="text-sm sm:text-xl text-black">
-              0 / {constants.mintVolume}
+              {mintCount} / {constants.mintVolume}
             </p>
           </div>
         </div>
@@ -409,8 +407,7 @@ export default function HomePage() {
                 onClick={() => {
                   if (mintCount > constants.minimum_mints)
                     setMintCount(mintCount - 1);
-                }}
-              >
+                }}>
                 -
               </p>
               <p className="pl-[15px] text-black sm:text-2xl">{mintCount}</p>
@@ -420,8 +417,7 @@ export default function HomePage() {
                   if (mintCount < constants.maximum_mints) {
                     setMintCount(mintCount + 1);
                   }
-                }}
-              >
+                }}>
                 +
               </p>
             </span>
@@ -432,8 +428,7 @@ export default function HomePage() {
           //disabled={!mintStarted}
           onClick={() => clickedMint(mintCount)}
           type="button"
-          className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg sm:text-2xl sm:px-5 sm:py-2.5 px-5 py-1.5 mr-2 mb-2  "
-        >
+          className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg sm:text-2xl sm:px-5 sm:py-2.5 px-5 py-1.5 mr-2 mb-2  ">
           {constants.mint_button}
         </button>
         <img
