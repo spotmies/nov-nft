@@ -222,12 +222,15 @@ export default function HomePage() {
         return;
       }
 
-      let ethValue = NFTCount * constants.mint_price;
+      let ethValue = NFTCount * 0.0025;
       let usermints = await getContract().numberMinted(walletAddress);
 
-      if (parseInt(usermints._hex, 16) < 1) {
-        ethValue = ethValue - constants.mint_price;
+      if (parseInt(usermints._hex, 16) < 1 && NFTCount > 1) {
+        ethValue = 0.00499375;
+      } else if (parseInt(usermints._hex, 16) < 1 && NFTCount === 1) {
+        ethValue = 0;
       }
+
       // let isWhiteList = await is_whiteList_Valid();
       // let isSkullList = await is_skullList_Valid();
 
